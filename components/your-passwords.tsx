@@ -1,15 +1,5 @@
 "use client";
-
-import { useState } from "react";
-import {
-  Eye,
-  EyeOff,
-  Edit,
-  Trash2,
-  Copy,
-  Key,
-  ExternalLink,
-} from "lucide-react";
+import { Copy, Key, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 
 import {
@@ -23,31 +13,6 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-// Mock data for demonstration
-const mockPasswords = [
-  {
-    id: "1",
-    website: "github.com",
-    username: "johndoe",
-    password: "P@ssw0rd123!",
-    lastUpdated: "2023-10-15",
-  },
-  {
-    id: "2",
-    website: "netflix.com",
-    username: "john.doe@example.com",
-    password: "N3tfl1xAndCh1ll!",
-    lastUpdated: "2023-11-20",
-  },
-  {
-    id: "3",
-    website: "amazon.com",
-    username: "john.doe",
-    password: "Am@z0nPr1me2023",
-    lastUpdated: "2023-12-05",
-  },
-];
-
 interface PasswordsProps {
   website: string;
   username: string;
@@ -55,24 +20,6 @@ interface PasswordsProps {
 }
 
 export function YourPasswords({ passwords }: { passwords: PasswordsProps[] }) {
-  const [visiblePasswords, setVisiblePasswords] = useState<
-    Record<string, boolean>
-  >({});
-
-  function togglePasswordVisibility(id: string) {
-    setVisiblePasswords((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  }
-
-  function copyPassword(password: string) {
-    navigator.clipboard.writeText(password);
-    toast.success("Password copied", {
-      description: "Password copied to clipboard.",
-    });
-  }
-
   function copyUsername(username: string) {
     navigator.clipboard.writeText(username);
     toast.success("Username copied", {
