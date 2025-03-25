@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,8 +16,12 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 const Navbar = () => {
   const { setTheme } = useTheme();
   return (
-    <nav className="flex justify-between items-center p-3 bg-border text-foreground sm:w-[90vw] mx-auto sm:rounded-md shadow-md">
-      <span className="font-bold text-lg">PassManager</span>
+    <nav className="flex justify-between items-center p-3 bg-border text-foreground sm:w-[90vw] mx-auto sm:rounded-md shadow-md sm:mt-2">
+      <div className="logo flex items-center space-x-[-0.5rem]">
+        <Image src="/logo.png" alt="Logo" width={45} height={45} />
+        <span className="font-bold text-lg">PassManager</span>
+      </div>
+
       <div className="flex justify-end space-x-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
