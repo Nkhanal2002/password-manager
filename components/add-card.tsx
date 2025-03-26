@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { CreditCard } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -45,6 +46,7 @@ const formSchema = z.object({
 export function AddCard() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { user, isLoaded } = useUser();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -102,6 +104,7 @@ export function AddCard() {
           description: "Your card has been securely stored.",
         });
         form.reset();
+        router.refresh();
       } else {
         toast.error("Failed to add card", {
           description: "Please try again later.",

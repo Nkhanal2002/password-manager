@@ -14,6 +14,10 @@ export default async function Home() {
       <h4 className="sm:text-lg text-center mb-8">
         Keep your cards and passwords safe — all in one secure place!
       </h4>
+      <p className="my-4 text-center">
+        ⚠️ This app is built for demo and educational purposes only. Please do
+        not store any real or sensitive information.
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-6">
           <section className="bg-card rounded-lg p-6 shadow-sm">

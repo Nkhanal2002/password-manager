@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { addPasswordServer } from "@/actions/action";
 import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 import {
   Form,
   FormControl,
@@ -30,6 +31,7 @@ export function AddPassword() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const { user, isLoaded } = useUser();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -60,18 +62,19 @@ export function AddPassword() {
 
       // Handle the result
       if (result?.success) {
-        toast.success("Card added successfully", {
-          description: "Your card has been securely stored.",
+        toast.success("Password added successfully", {
+          description: "Your password has been securely stored.",
         });
         form.reset();
+        router.refresh();
       } else {
-        toast.error("Failed to add card", {
+        toast.error("Failed to add password", {
           description: "Please try again later.",
         });
       }
     } catch (error) {
-      console.error("Error adding card:", error);
-      toast.error("Failed to add card", {
+      console.error("Error adding password:", error);
+      toast.error("Failed to add password", {
         description: "An unexpected error occurred.",
       });
     } finally {
@@ -97,7 +100,7 @@ export function AddPassword() {
           name="website"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Website or Service</FormLabel>
+              <FormLabel>Website</FormLabel>
               <FormControl>
                 <Input placeholder="example.com" {...field} />
               </FormControl>
