@@ -1,7 +1,7 @@
 # 🔐 Password Manager
 
 A secure and minimal password manager built with **Next.js 15**, **Clerk authentication**, and **shadcn/ui** components. Store and manage your **passwords** and **credit card information** in one private, encrypted space.
-
+> ⚠️ **Disclaimer:** This app is built for demo and educational purposes only. Please do not store any real or sensitive information.
 ---
 
 ## ✨ Features
