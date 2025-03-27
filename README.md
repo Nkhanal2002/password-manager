@@ -6,13 +6,13 @@ A secure and minimal password manager built with **Next.js 15**, **Clerk authent
 
 ## ✨ Features
 
-- 🔑 **User Authentication** with Clerk
-- 💳 Add, view, and manage **credit cards**
-- 🔐 Store and manage **passwords** securely
-- 🌙 Light/dark mode with system preference
-- ⚡ Optimized with **Next.js 15 App Router**
-- 💅 Beautiful UI using **shadcn/ui** and **Tailwind CSS**
-- 🔔 Toast notifications with `sonner`
+- **User Authentication** with Clerk
+- Add, view, and manage **credit cards**
+- Store and manage **passwords** securely
+- Light/dark mode with system preference
+-  Optimized with **Next.js 15 App Router**
+- Beautiful UI using **shadcn/ui** and **Tailwind CSS**
+- Toast notifications with `sonner`
 
 ---
 
