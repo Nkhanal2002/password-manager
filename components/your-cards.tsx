@@ -10,6 +10,7 @@ interface CardsProps {
   expiryDate: string;
   cvv: string;
 }
+
 export function YourCards({ cards }: { cards: CardsProps[] }) {
   function maskCardNumber(cardNumber: string) {
     // Keep first 4 and last 4 digits visible, mask the rest
