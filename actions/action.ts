@@ -6,7 +6,6 @@ interface Card {
   cardholderName: string;
   expiryDate: string;
   cvv: string;
-  id?: string;
 }
 
 interface Password {
@@ -33,14 +32,7 @@ export async function addCardSever(
   const cards: Card[] = Array.isArray(existingCards) ? [...existingCards] : [];
 
   // Add the new card
-  const newCard = {
-    cardNumber,
-    cardholderName,
-    expiryDate,
-    cvv,
-    id: crypto.randomUUID(),
-  };
-  cards.push(newCard);
+  cards.push({ cardNumber, cardholderName, expiryDate, cvv });
 
   // Update the user's private metadata, preserving other fields
   client.users.updateUserMetadata(userId, {
@@ -56,75 +48,7 @@ export async function addCardSever(
 
   return { success: true };
 }
-// function editCardServer
-export async function editCardServer(
-  cardId: string,
-  cardNumber: string,
-  cardholderName: string,
-  expiryDate: string,
-  cvv: string,
-  userId: string
-) {
-  const client = await clerkClient();
-  // Get the current user
-  const user = await client.users.getUser(userId);
 
-  // Get existing cards
-  const existingCards = user.privateMetadata.cards || [];
-
-  // Ensure existingCards is treated as an array
-  const cards: Card[] = Array.isArray(existingCards) ? [...existingCards] : [];
-
-  // Find the index of the card to edit
-  const cardIndex = cards.findIndex((card) => card.id === cardId);
-
-  if (cardIndex === -1) {
-    return { success: false, message: "Card not found" };
-  }
-
-  // Update the card
-  cards[cardIndex] = {
-    ...cards[cardIndex],
-    cardNumber,
-    cardholderName,
-    expiryDate,
-    cvv,
-  };
-
-  // Update the user's private metadata
-  await client.users.updateUserMetadata(userId, {
-    privateMetadata: {
-      ...user.privateMetadata,
-      cards: cards,
-    },
-  });
-
-  return { success: true };
-}
-export async function deleteCardServer(cardId: string, userId: string) {
-  const client = await clerkClient();
-  // Get the current user
-  const user = await client.users.getUser(userId);
-
-  // Get existing cards
-  const existingCards = user.privateMetadata.cards || [];
-
-  // Ensure existingCards is treated as an array
-  const cards: Card[] = Array.isArray(existingCards) ? [...existingCards] : [];
-
-  // Filter out the card to delete
-  const updatedCards = cards.filter((card) => card.id !== cardId);
-
-  // Update the user's private metadata
-  await client.users.updateUserMetadata(userId, {
-    privateMetadata: {
-      ...user.privateMetadata,
-      cards: updatedCards,
-    },
-  });
-
-  return { success: true };
-}
 export async function addPasswordServer(
   website: string,
   username: string,
