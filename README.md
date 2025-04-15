@@ -1,10 +1,10 @@
-# 🔐 Password Manager
+#Password Manager
 
 A secure and minimal password manager built with **Next.js 15**, **Clerk authentication**, and **shadcn/ui** components. Store and manage your **passwords** and **credit card information** in one private, encrypted space.
 > ⚠️ **Disclaimer:** This app is built for demo and educational purposes only. Please do not store any real or sensitive information.
 ---
 
-## ✨ Features
+## Features
 
 - **User Authentication** with Clerk
 - Add, view, and manage **credit cards**
@@ -16,7 +16,7 @@ A secure and minimal password manager built with **Next.js 15**, **Clerk authent
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: [Next.js 15](https://nextjs.org/)
 - **Authentication**: [Clerk](https://clerk.dev/)
